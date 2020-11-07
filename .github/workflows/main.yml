@@ -13,11 +13,21 @@ jobs:
       - name: Install 🔧
         run: npm install
 
-      - name: Lint 🧐
-        run: npm run lint
+      # - name: Lint 🧐
+      #   run: npm run lint
 
       - name: Test 🚨
         run: npm test
 
       - name: Build 🏗️
         run: npm run build
+      # Deploy
+      - name: Deploy
+        uses: easingthemes/ssh-deploy@v2.0.7
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: "-avz --delete"
+          # SOURCE: "./dist"
+          REMOTE_HOST: "39.107.38.153"
+          REMOTE_USER: "root"
+          # TARGET: "[Server Dir]"
