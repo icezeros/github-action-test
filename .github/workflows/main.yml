@@ -27,7 +27,7 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
           ARGS: "-avz --delete"
-          # SOURCE: "./dist"
-          REMOTE_HOST: "39.107.38.153"
-          REMOTE_USER: "root"
+          SOURCE: "./dist"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
           # TARGET: "[Server Dir]"
